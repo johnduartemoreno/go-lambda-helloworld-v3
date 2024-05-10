@@ -18,8 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: aws-cdk
-
+ 
       - name: Deploy to AWS
         run: npx cdk deploy --app .
         env:
