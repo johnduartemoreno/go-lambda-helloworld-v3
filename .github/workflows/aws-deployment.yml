@@ -23,6 +23,12 @@ jobs:
       - name: Install dependencies
         run: npm install
       
+      - name: Compile Go code
+        run: |
+          cd go
+          go build -o ../bin/main main.go
+          cd ..
+
       - name: Create temporary directory
         run: |
           mkdir -p /tmp/cdk-output
@@ -32,5 +38,5 @@ jobs:
 
       - name: Deploy to AWS
         run: |
-          npx cdk synth .
+          npx cdk synth . --output /tmp/cdk-output
           npx cdk deploy . --require-approval never
