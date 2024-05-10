@@ -39,4 +39,4 @@ jobs:
       - name: Deploy to AWS
         run: |
           npx cdk synth GoLambdaHelloworldV3Stack --output /tmp/cdk-output
-          npx cdk deploy --app . --require-approval never
+          npx cdk deploy --app /tmp/cdk-output --require-approval never
