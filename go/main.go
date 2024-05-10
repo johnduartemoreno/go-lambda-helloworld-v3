@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"context"
+
+	"github.com/aws/aws-lambda-go/lambda"
+)
+
+func HandleRequest(ctx context.Context) (string, error) {
+	return "Hello World!", nil
+}
 
 func main() {
-    fmt.Println("Hello World")
+	lambda.Start(HandleRequest)
 }
