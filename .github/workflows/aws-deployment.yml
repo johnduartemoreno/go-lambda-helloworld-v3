@@ -23,6 +23,9 @@ jobs:
         run: |
           mkdir -p /tmp/cdk-output
       
+      - name: Bootstrap AWS CDK
+        run: npx cdk bootstrap          
+
       - name: Deploy to AWS
         run: |
           npx cdk synth --output /tmp/cdk-output
