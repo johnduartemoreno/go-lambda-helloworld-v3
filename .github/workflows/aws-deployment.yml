@@ -33,5 +33,5 @@ jobs:
       - name: Deploy to AWS
         run: |
           npx cdk synth --output /tmp/cdk-output
-          npx cdk deploy --app /tmp/cdk-output
+          npx cdk deploy --app /tmp/cdk-output --require-approval never
 
