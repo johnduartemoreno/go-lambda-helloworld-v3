@@ -18,11 +18,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
- 
+      
+      - name: Create temporary directory
+        run: |
+          mkdir -p /tmp/cdk-output
+      
       - name: Deploy to AWS
         run: |
-          npx cdk synth --output /c/Users/acer/repos/go-lambda-helloworld-v3/cdk
-          npx cdk deploy --app /c/Users/acer/repos/go-lambda-helloworld-v3/cdk
+          npx cdk synth --output /tmp/cdk-output
+          npx cdk deploy --app /tmp/cdk-output
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
