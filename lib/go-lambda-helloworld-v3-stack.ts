@@ -17,7 +17,7 @@ export class GoLambdaHelloworldV3Stack extends cdk.Stack {
     // Crea un endpoint de API Gateway que invoque la función Lambda cuando se haga una solicitud GET
     const api = new apigw.LambdaRestApi(this, 'HelloApi', {
       handler: helloLambda,
-      proxy: true,
+      proxy: false,
     });
 
     // Agrega un recurso raíz al endpoint de API Gateway
