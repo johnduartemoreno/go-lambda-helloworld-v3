@@ -9,7 +9,7 @@ export class GoLambdaHelloworldV3Stack extends cdk.Stack {
 
     // Define la función Lambda
     const helloLambda = new lambda.Function(this, 'HelloLambda', {
-      runtime: lambda.Runtime.GO_1_X, // Se cambió el runtime a GO_1_X
+      runtime: lambda.Runtime.PROVIDED_AL2, // Cambiar el runtime a PROVIDED_AL2
       handler: 'main', // Se ajustó el handler para que coincida con el nombre del archivo binario de Go
       code: lambda.Code.fromAsset('go'), // Se asume que el directorio 'go' contiene el binario compilado de la función Lambda
     });
