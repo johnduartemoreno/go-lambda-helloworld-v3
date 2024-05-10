@@ -11,7 +11,7 @@ export class GoLambdaHelloworldV3Stack extends cdk.Stack {
     const helloLambda = new lambda.Function(this, 'HelloLambda', {
       runtime: lambda.Runtime.NODEJS_16_X,
       handler: 'index.handler',
-      code: lambda.Code.fromAsset('.'), // Esto especifica que el código de la función Lambda se encuentra en el directorio raíz del proyecto
+      code: lambda.Code.fromAsset('.', { exclude: ['cdk.out'] }), // Excluye la carpeta cdk.out
     });
 
     // Crea un endpoint de API Gateway que invoque la función Lambda cuando se haga una solicitud GET
