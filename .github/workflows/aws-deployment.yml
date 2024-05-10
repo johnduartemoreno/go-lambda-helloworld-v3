@@ -20,7 +20,9 @@ jobs:
         run: npm install
  
       - name: Deploy to AWS
-        run: npx cdk deploy --app .
+        run: |
+          npx cdk synth --output /c/Users/acer/repos/go-lambda-helloworld-v3/cdk
+          npx cdk deploy --app /c/Users/acer/repos/go-lambda-helloworld-v3/cdk
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
