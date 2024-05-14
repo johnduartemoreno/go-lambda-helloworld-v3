@@ -18,12 +18,18 @@ export class GoLambdaHelloworldV3Stack extends cdk.Stack {
     const api = new apigw.LambdaRestApi(this, 'HelloApi', {
       handler: helloLambda,
       proxy: false,
+      defaultCorsPreflightOptions: {
+        allowOrigins: apigw.Cors.ALL_ORIGINS // Permite solicitudes desde cualquier origen
+      }
     });
 
     // Agrega un recurso raíz al endpoint de API Gateway
     const apiRoot = api.root;
 
-    // Agrega un método GET al recurso raíz
-    apiRoot.addMethod('GET');
+    // Agrega un método GET al recurso raíz sin requerir autorización
+    apiRoot.addMethod('GET', new apigw.LambdaIntegration(helloLambda), {
+      authorizationType: apigw.AuthorizationType.NONE, // Configura el tipo de autorización como NONE
+      apiKeyRequired: false // No requiere API Key
+    });
   }
 }
